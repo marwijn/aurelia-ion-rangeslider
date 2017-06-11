@@ -21,16 +21,15 @@ System.register(["aurelia-framework", "jquery", "ion-rangeslider"], function (ex
         ],
         execute: function () {
             AureliaIonRangesliderCustomElement = (function () {
-                function AureliaIonRangesliderCustomElement(element) {
-                    this.element = element;
+                function AureliaIonRangesliderCustomElement() {
                     this.itemsToSet = {};
                 }
                 AureliaIonRangesliderCustomElement.prototype.attached = function () {
                     var _this = this;
                     this.itemsToSet.onChange = function (x) { return _this.updateValues(x); };
                     this.itemsToSet.onUpdate = function (x) { return _this.updateValues(x); };
-                    $(this.element).children('input').first().ionRangeSlider(this.itemsToSet);
-                    this.slider = $(this.element).children('input').first().data('ionRangeSlider');
+                    $(this.sliderRef).ionRangeSlider(this.itemsToSet);
+                    this.slider = $(this.sliderRef).data('ionRangeSlider');
                 };
                 AureliaIonRangesliderCustomElement.prototype.updateValues = function (x) {
                     this.to = x.to;
@@ -180,7 +179,8 @@ System.register(["aurelia-framework", "jquery", "ion-rangeslider"], function (ex
                 aurelia_framework_1.bindable
             ], AureliaIonRangesliderCustomElement.prototype, "disable", void 0);
             AureliaIonRangesliderCustomElement = __decorate([
-                aurelia_framework_1.autoinject
+                aurelia_framework_1.autoinject,
+                aurelia_framework_1.inlineView('<template><input ref="sliderRef" /></template>')
             ], AureliaIonRangesliderCustomElement);
             exports_1("AureliaIonRangesliderCustomElement", AureliaIonRangesliderCustomElement);
         }

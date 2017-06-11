@@ -1,8 +1,8 @@
 import "ion-rangeslider";
 export declare class AureliaIonRangesliderCustomElement {
-    private element;
     private slider;
     private itemsToSet;
+    private sliderRef;
     type: any;
     min: any;
     max: any;
@@ -45,7 +45,7 @@ export declare class AureliaIonRangesliderCustomElement {
     values_separator: any;
     input_values_separator: any;
     disable: any;
-    constructor(element: Element);
+    constructor();
     attached(): void;
     private updateValues(x);
     propertyChanged(name: string, newValue: any, oldValue: any): void;
