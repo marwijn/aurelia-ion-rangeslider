@@ -1,6 +1,6 @@
 {
   "name": "aurelia-ion-rangeslider",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An aurelia-wrapper for ion-rangeslider",
   "scripts": {
     "prebuild:amd": "cross-env rimraf dist/amd",
