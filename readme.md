@@ -7,7 +7,7 @@ npm i jquery ion-rangeslider aurelia-ion-rangeslider
 
 ## Aurelia CLI config
 
-skinModern theme is used here but you can use whatever theme you like.
+skinModern theme is used here but you can use whatever theme you like. Add the following to the dependencies in aurelia.json:
 
 ```json
 "jquery",
@@ -36,11 +36,12 @@ skinModern theme is used here but you can use whatever theme you like.
 }
 ```
 
-## Useage
+## Usage
 
 ```html
 <require from="ion-rangeslider/css/ion.rangeSlider.css"></require>
 <require from="ion-rangeslider/css/ion.rangeSlider.skinModern.css"></require>
+<require from="aurelia-ion-rangeslider></require>
 
 <aurelia-ion-rangeslider></aurelia-ion-rangeslider>
 ```
