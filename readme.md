@@ -41,7 +41,7 @@ skinModern theme is used here but you can use whatever theme you like. Add the f
 ```html
 <require from="ion-rangeslider/css/ion.rangeSlider.css"></require>
 <require from="ion-rangeslider/css/ion.rangeSlider.skinModern.css"></require>
-<require from="aurelia-ion-rangeslider></require>
+<require from="aurelia-ion-rangeslider"></require>
 
 <aurelia-ion-rangeslider></aurelia-ion-rangeslider>
 ```
