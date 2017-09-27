@@ -32,6 +32,10 @@ define(["require", "exports", "aurelia-framework", "jquery", "ion-rangeslider"],
             this.from_value = x.from_value;
         };
         AureliaIonRangesliderCustomElement.prototype.propertyChanged = function (name, newValue, oldValue) {
+            if (name === 'min_interval' || name === 'max_interval') {
+                if (typeof (newValue) === 'string')
+                    newValue = +newValue;
+            }
             if (!this.slider) {
                 this.itemsToSet[name] = newValue;
                 return;

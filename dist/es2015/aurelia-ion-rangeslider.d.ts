@@ -3,6 +3,7 @@ export declare class AureliaIonRangesliderCustomElement {
     private slider;
     private itemsToSet;
     private sliderRef;
+    only_on_finished: any;
     type: any;
     min: any;
     max: any;

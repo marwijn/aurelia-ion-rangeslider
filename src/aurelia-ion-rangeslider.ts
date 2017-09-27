@@ -95,6 +95,9 @@ export class AureliaIonRangesliderCustomElement {
   }
 
   propertyChanged(name: string, newValue, oldValue) {
+	if (name === 'min_interval' || name === 'max_interval') {
+		if (typeof(newValue) === 'string') newValue = +newValue;
+	}
     if (!this.slider) {
       this.itemsToSet[name] = newValue;
       return;
