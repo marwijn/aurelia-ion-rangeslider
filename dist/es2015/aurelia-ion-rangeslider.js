@@ -12,8 +12,13 @@ let AureliaIonRangesliderCustomElement = class AureliaIonRangesliderCustomElemen
         this.itemsToSet = {};
     }
     attached() {
-        this.itemsToSet.onChange = (x) => this.updateValues(x);
-        this.itemsToSet.onUpdate = (x) => this.updateValues(x);
+        if (this.only_on_finished) {
+            this.itemsToSet.onFinish = (x) => this.updateValues(x);
+        }
+        else {
+            this.itemsToSet.onChange = (x) => this.updateValues(x);
+            this.itemsToSet.onUpdate = (x) => this.updateValues(x);
+        }
         $(this.sliderRef).ionRangeSlider(this.itemsToSet);
         this.slider = $(this.sliderRef).data('ionRangeSlider');
     }
@@ -26,6 +31,8 @@ let AureliaIonRangesliderCustomElement = class AureliaIonRangesliderCustomElemen
         this.from_value = x.from_value;
     }
     propertyChanged(name, newValue, oldValue) {
+        if (name === 'min_interval')
+            newValue = num(newValue);
         if (!this.slider) {
             this.itemsToSet[name] = newValue;
             return;
@@ -37,6 +44,9 @@ let AureliaIonRangesliderCustomElement = class AureliaIonRangesliderCustomElemen
         this.slider.update(data);
     }
 };
+__decorate([
+    bindable
+], AureliaIonRangesliderCustomElement.prototype, "only_on_finished", void 0);
 __decorate([
     bindable
 ], AureliaIonRangesliderCustomElement.prototype, "type", void 0);

@@ -10,6 +10,8 @@ export class AureliaIonRangesliderCustomElement {
   private itemsToSet: any = {};
   private sliderRef: Element;
 
+  @bindable only_on_finished;
+  
   @bindable type;
 
   @bindable min;
@@ -72,8 +74,13 @@ export class AureliaIonRangesliderCustomElement {
   }
 
   attached() {
-    this.itemsToSet.onChange = (x) => this.updateValues(x);
-    this.itemsToSet.onUpdate = (x) => this.updateValues(x);
+	if (this.only_on_finished) {
+		this.itemsToSet.onFinish = (x) => this.updateValues(x);
+	} else {
+		this.itemsToSet.onChange = (x) => this.updateValues(x);
+		this.itemsToSet.onUpdate = (x) => this.updateValues(x);
+	}
+    
     $(this.sliderRef).ionRangeSlider(this.itemsToSet);
     this.slider = $(this.sliderRef).data('ionRangeSlider');
   }
@@ -88,6 +95,9 @@ export class AureliaIonRangesliderCustomElement {
   }
 
   propertyChanged(name: string, newValue, oldValue) {
+	if (name === 'min_interval' || name === 'max_interval') {
+		if (typeof(newValue) === 'string') newValue = +newValue;
+	}
     if (!this.slider) {
       this.itemsToSet[name] = newValue;
       return;
